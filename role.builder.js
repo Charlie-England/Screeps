@@ -45,12 +45,6 @@ let roleBuilder = {
             uses the roomSource class to keep track of which creeps are at which source to avoid issues with ineffecient assignment
             */
             
-            //Call addWorker with the current creep.name and return -1 or the source.id
-            let hNode = rs.addWorker(creep.name);
-            if (hNode > -1) {
-                creep.memory.harvestNode = hNode;
-            }
-            
             //If the memory is undefined or -1 at this point, it needs a source to harvest:
             //Call removeWorker to fully remove them from the rs object, add worker back in and assign returned source.id to memory
             if (creep.memory.harvestNode == undefined || creep.memory.harvestNode == -1) {

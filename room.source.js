@@ -27,12 +27,12 @@ class RoomSource {
         if (this.allWorkers.includes(creepName)) {
             return -1;
         } else {
-            let min = this.assigned[this.sources[0].id];
+            let min = this.assigned[this.sources[0].id].length;
             let minIndex = 0;
             
             for (let src in this.sources) {
-                if (this.assigned[this.sources[src].id] < min) {
-                    min = this.assigned[this.sources[0].id];
+                if (this.assigned[this.sources[src].id].length < min) {
+                    min = this.assigned[this.sources[src].id];
                     minIndex = src;
                 }
             }
@@ -62,11 +62,14 @@ class RoomSource {
             let sourceOption = this.getLowSource(creepName);
             
             this.assigned[sourceOption.id].push(creepName);
+            
             this.allWorkers.push(creepName);
             console.log("SOURCE ASSIGNMENT: " + creepName + " to sourceID: " + sourceOption.id);
             
             return (sourceOption.id);
         }
+        
+        
     }
     
     removeWorker(creepName) {
